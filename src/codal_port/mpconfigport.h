@@ -88,6 +88,9 @@
 #define MICROPY_HW_ENABLE_RNG                   (1)
 #define MICROPY_MBFS                            (1)
 
+//tester module
+#define MICROPY_PY_SUBSYSTEM                    (1)
+
 // Custom errno list.
 #define MICROPY_PY_ERRNO_LIST \
     X(EPERM) \
