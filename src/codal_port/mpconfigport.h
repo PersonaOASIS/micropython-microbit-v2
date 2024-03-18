@@ -92,7 +92,7 @@
 #define MICROPY_PY_SUBSYSTEM                    (1)
 
 // Added machine learning module
-#define MICROBIY_ML                             (0)
+#define MICROBIT_MODEL                             (0)
 
 // Custom errno list.
 #define MICROPY_PY_ERRNO_LIST \

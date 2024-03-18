@@ -91,7 +91,7 @@ SRC_C += \
 	modlove.c \
 	modmachine.c \
 	modmicrobit.c \
-	modml.c \
+	modmodel.c \
 	modmusic.c \
 	modmusictunes.c \
 	modos.c \
