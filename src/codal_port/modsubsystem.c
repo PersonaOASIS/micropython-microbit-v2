@@ -28,6 +28,8 @@ STATIC mp_obj_t py_subsystem_info(void) {
     mp_uint_t out_sz = mp_stream_read_exactly(classes_f_descriptor, vstr.buf, sz, &error);
     vstr.len = out_sz;
 
+    
+
     //Check for errors
     if(error != 0) {
         if(mp_is_nonblocking_error(error)) {
@@ -36,7 +38,10 @@ STATIC mp_obj_t py_subsystem_info(void) {
         mp_raise_OSError(error);
     } else {
         //Return content as Python string object
-        return mp_obj_new_str_from_vstr(&vstr);
+        mp_obj_t bigString = mp_obj_new_str_from_vstr(&vstr);
+        size_t size = 1;
+        mp_obj_t list = mp_obj_str_split(size, bigString);
+        return list;
     }
 }
 MP_DEFINE_CONST_FUN_OBJ_0(subsystem_info_obj, py_subsystem_info);
