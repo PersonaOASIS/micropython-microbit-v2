@@ -1,15 +1,15 @@
-//This is a tester module to test if it works
-//Remove before finishing the project
+//This is a module that is intended to read a file from the filesystem with the names 
+//of classes of a machine learning model, returning the class names in a list
 
 #include "py/builtin.h"
 #include "py/runtime.h"
 #include "py/stream.h"
 #include "py/objstr.h"
 
-#if MICROPY_PY_SUBSYSTEM
+#if MICROBIT_MODEL_READER
 
 // info()
-STATIC mp_obj_t py_subsystem_info(void) {
+STATIC mp_obj_t mlreader_read_class_names(void) {
     //return MP_OBJ_NEW_SMALL_INT(3);
     mp_obj_t open_args[2] = {
         mp_obj_new_str("namesOfClasses.txt", strlen("namesOfClasses.txt")), //filename
@@ -37,26 +37,26 @@ STATIC mp_obj_t py_subsystem_info(void) {
         }
         mp_raise_OSError(error);
     } else {
-        //Return content as Python string object
+        //Return content as Python list object
         mp_obj_t bigString = mp_obj_new_str_from_vstr(&vstr);
         size_t size = 1;
-        mp_obj_t list = mp_obj_str_split(size, bigString);
+        mp_obj_t list = mp_obj_str_split(size, &bigString);
         return list;
     }
 }
-MP_DEFINE_CONST_FUN_OBJ_0(subsystem_info_obj, py_subsystem_info);
+MP_DEFINE_CONST_FUN_OBJ_0(mlreader_read_class_names_obj, mlreader_read_class_names);
 
-STATIC const mp_rom_map_elem_t mp_module_subsystem_globals_table[] = {
-    { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_subsystem) },
-    { MP_ROM_QSTR(MP_QSTR_info), MP_ROM_PTR(&subsystem_info_obj) },
+STATIC const mp_rom_map_elem_t mlreader_module_globals_table[] = {
+    { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_mlreader) },
+    { MP_ROM_QSTR(MP_QSTR_read_class_names), MP_ROM_PTR(&mlreader_read_class_names_obj) },
 };
-STATIC MP_DEFINE_CONST_DICT(mp_module_subsystem_globals, mp_module_subsystem_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mlreader_module_globals, mlreader_module_globals_table);
 
-const mp_obj_module_t mp_module_subsystem = {
+const mp_obj_module_t mlreader_module = {
     .base = { &mp_type_module },
-    .globals = (mp_obj_dict_t *)&mp_module_subsystem_globals,
+    .globals = (mp_obj_dict_t *)&mlreader_module_globals,
 };
 
-MP_REGISTER_MODULE(MP_QSTR_subsystem, mp_module_subsystem);
+MP_REGISTER_MODULE(MP_QSTR_mlreader, mlreader_module);
 
 #endif

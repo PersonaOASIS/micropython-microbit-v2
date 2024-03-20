@@ -88,8 +88,8 @@
 #define MICROPY_HW_ENABLE_RNG                   (1)
 #define MICROPY_MBFS                            (1)
 
-//tester module
-#define MICROPY_PY_SUBSYSTEM                    (1)
+// The module used to read class names from a file for demo
+#define MICROBIT_MODEL_READER                    (1)
 
 // Added machine learning module
 #define MICROBIT_MODEL                             (0)

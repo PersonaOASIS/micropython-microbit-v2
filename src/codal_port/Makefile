@@ -91,6 +91,7 @@ SRC_C += \
 	modlove.c \
 	modmachine.c \
 	modmicrobit.c \
+	modmlreader.c \
 	modmodel.c \
 	modmusic.c \
 	modmusictunes.c \
@@ -98,7 +99,6 @@ SRC_C += \
 	modpower.c \
 	modradio.c \
 	modspeech.c \
-	modsubsystem.c \
 	modthis.c \
 	mphalport.c \
 
